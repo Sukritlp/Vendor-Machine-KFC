@@ -1,0 +1,292 @@
+/* สไตล์พื้นฐานสำหรับทุกอุปกรณ์ */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('pic/xz8g-hero.webp');
+    opacity: 0.95;
+    background-size: cover; /* ขยายรูปภาพให้เต็มหน้าจอ */
+    background-position: center; /* จัดรูปภาพให้อยู่ตรงกลาง */
+    background-attachment: fixed; /* ทำให้รูปพื้นหลังคงที่เมื่อเลื่อนหน้าจอ */
+    background-repeat: no-repeat; /* ไม่ทำซ้ำรูป */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vending-machine {
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+}
+
+h1 {
+    text-align: center;
+    color: #e4002b;
+}
+
+/* เมนูหมวดหมู่ */
+.category-menu {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.category-menu button {
+    background-color: #e4002b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.category-menu button:hover {
+    background-color: #b30021;
+}
+
+/* เมนูอาหารและเครื่องดื่ม */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+button {
+    background-color: #e4002b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: auto;
+}
+
+button:hover {
+    background-color: #b30021;
+}
+
+/* ส่วนของหน้าการชำระเงิน */
+.checkout-page {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #e4002b;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* รายการสินค้าที่เลือก */
+#checkoutItems {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#checkoutItems li {
+    font-size: 1em;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+#checkoutItems li:last-child {
+    border-bottom: none;
+}
+
+/* ข้อความยอดรวมและต้องจ่าย */
+p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+#totalAmount {
+    font-weight: bold;
+    color: #e4002b;
+}
+
+#remainingAmount {
+    font-weight: bold;
+    color: #e4002b;
+}
+
+.money-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.money-buttons button {
+    background-color: #e4002b;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.money-buttons button:hover {
+    background-color: #b30021;
+}
+
+/* สไตล์สำหรับ modal */
+.modal {
+    display: none; /* ซ่อน modal จนกว่าจะเรียกใช้ */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* พื้นหลังโปร่งแสง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.modal-content button {
+    background-color: #e4002b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.modal-content button:hover {
+    background-color: #b30021;
+}
+
+/* สไตล์สำหรับแถบแจ้งเตือน */
+.notification-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2em;
+    z-index: 1000;
+}
+
+/* Media Queries สำหรับการทำให้ responsive */
+
+/* สำหรับหน้าจอมือถือ (กว้างสูงสุด 600px) */
+@media only screen and (max-width: 600px) {
+    .menu {
+        grid-template-columns: repeat(2, 1fr); /* แสดง 2 คอลัมน์ในหน้าจอมือถือ */
+    }
+
+    .checkout-page {
+        max-width: 90%; /* ปรับขนาดหน้าจอ checkout ให้เป็น 90% ของหน้าจอมือถือ */
+    }
+
+    .money-buttons {
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .money-buttons button {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+/* สำหรับหน้าจอแท็บเล็ต (601px ถึง 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .menu {
+        grid-template-columns: repeat(3, 1fr); /* แสดง 3 คอลัมน์ในหน้าจอแท็บเล็ต */
+    }
+
+    .checkout-page {
+        max-width: 80%; /* ปรับขนาดหน้าจอ checkout ให้เป็น 80% ของหน้าจอแท็บเล็ต */
+    }
+
+    .money-buttons {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .money-buttons button {
+        padding: 9px;
+        font-size: 1em;
+    }
+}
+
+/* สำหรับหน้าจอขนาดใหญ่ (มากกว่า 900px) */
+@media only screen and (min-width: 901px) {
+    .menu {
+        grid-template-columns: repeat(5, 1fr); /* แสดง 5 คอลัมน์ในหน้าจอขนาดใหญ่ */
+    }
+
+    .checkout-page {
+        max-width: 400px; /* ใช้ขนาดปกติสำหรับหน้าจอขนาดใหญ่ */
+    }
+}

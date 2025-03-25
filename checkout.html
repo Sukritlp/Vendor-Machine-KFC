@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="checkout-page">
+        <h1>Checkout</h1>
+        <h2>รายการที่คุณเลือก:</h2>
+        <ul id="checkoutItems">
+            <!-- รายการสินค้าจะถูกเพิ่มที่นี่ -->
+        </ul>
+        <p>ยอดรวมทั้งหมด: <span id="totalAmount"></span> THB</p>
+        <p>ต้องจ่ายเพิ่มอีก: <span id="remainingAmount">0</span> THB</p>
+    </div>
+
+    <!-- ปุ่มเพิ่มเงินที่มุมขวาล่าง -->
+    <div class="money-buttons">
+        <button onclick="addMoney(100)">+ 100 บาท</button>
+        <button onclick="addMoney(50)">+ 50 บาท</button>
+        <button onclick="addMoney(20)">+ 20 บาท</button>
+        <button onclick="addMoney(10)">+ 10 บาท</button>
+        <button onclick="addMoney(5)">+ 5 บาท</button>
+        <button onclick="addMoney(1)">+ 1 บาท</button>
+    </div>
+
+    <!-- แถบแจ้งเตือน -->
+    <div id="notification-bar" class="notification-bar"></div>
+
+    <script>
+        // ดึงข้อมูลจาก URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const cart = JSON.parse(urlParams.get('cart'));
+        let total = parseInt(urlParams.get('total'));
+        let remaining = total;
+
+        // แสดงรายการสินค้าที่ผู้ใช้เลือก
+        const checkoutItems = document.getElementById('checkoutItems');
+        cart.forEach(item => {
+            checkoutItems.innerHTML += `<li>${item.item} - ${item.price} THB</li>`;
+        });
+
+        // แสดงยอดรวม
+        document.getElementById('totalAmount').innerText = total;
+
+        // แสดงยอดที่ต้องจ่ายเพิ่ม
+        document.getElementById('remainingAmount').innerText = remaining;
+
+        // ฟังก์ชันแสดงข้อความแจ้งเตือน
+        function showNotification(message) {
+            const notificationBar = document.getElementById('notification-bar');
+            notificationBar.innerText = message;
+            notificationBar.style.display = 'block';
+            
+            // ซ่อนข้อความหลังจาก 3 วินาที
+            setTimeout(() => {
+                notificationBar.style.display = 'none';
+            }, 3000);
+        }
+
+        function addMoney(amount) {
+    remaining -= amount; // หักยอดที่จ่ายเพิ่ม
+
+    // ถ้ามีเงินเกิน ต้องทอนเงิน
+    if (remaining < 0) {
+        const refund = Math.abs(remaining); // คำนวณจำนวนเงินที่ต้องทอน
+        showNotification(`กำลังทอนเงิน ${refund} บาท`);
+        remaining = 0; // รีเซ็ตยอดเงินที่เหลือเป็น 0 เพราะทอนเงินครบแล้ว
+        document.getElementById('remainingAmount').innerText = remaining; // อัปเดตยอดที่เหลือ
+
+        // แจ้งให้ผู้ใช้หยิบสินค้า
+        setTimeout(() => {
+            showNotification('กรุณาหยิบสินค้า');
+
+            // รอ 3 วินาทีหลังจากแจ้งเตือนเพื่อเปลี่ยนไปหน้าขอบคุณ
+            setTimeout(() => {
+                window.location.href = 'thankyou.html'; // เปลี่ยนเส้นทางไปยังหน้า thankyou.html
+            }, 3000); // สามารถปรับเวลาได้ตามต้องการ
+
+        }, 3000); // แสดงข้อความหลังจากทอนเงินเสร็จ 3 วินาที
+    }
+
+    // ถ้ายอดเงินครบพอดี
+    else if (remaining === 0) {
+        showNotification('กรุณาหยิบสินค้า');
+
+        // รอ 3 วินาทีหลังจากแจ้งเตือนเพื่อเปลี่ยนไปหน้าขอบคุณ
+        setTimeout(() => {
+            window.location.href = 'thankyou.html'; // เปลี่ยนเส้นทางไปยังหน้า thankyou.html
+        }, 3000); // สามารถปรับเวลาได้ตามต้องการ
+    }
+
+    // อัปเดตยอดเงินที่เหลือที่ต้องจ่าย
+    document.getElementById('remainingAmount').innerText = remaining;
+}
+function goToHome() {
+            window.location.href = 'index.html'; // เปลี่ยนเป็นชื่อไฟล์หน้าหลักของคุณ
+        }
+
+    </script>
+</body>
+</html>

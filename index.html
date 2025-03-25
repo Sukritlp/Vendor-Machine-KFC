@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KFC Machine</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <div class="vending-machine">
+        <h1>KFC Machine</h1>
+        <div class="category-menu">
+            <button onclick="showCategory('snacks')">ทานเล่น</button>
+            <button onclick="showCategory('drinks')">เครื่องดื่ม</button>
+        </div>
+        <div class="menu" id="snacks">
+            <div class="item" data-price="45">
+                <img src="pic/1_pc._Fried_Chicken_480x388.webp" alt="ไก่กรอบฮอทแอนด์สไปซี่">
+                <h3>ไก่กรอบฮอทแอนด์สไปซี่</h3>
+                <p>Price: 45 THB</p>
+                <button onclick="addToCart('ไก่กรอบฮอทแอนด์สไปซี่', 45)">Add to Cart</button>
+            </div>
+            <div class="item" data-price="60">
+                <img src="pic/3_pcs._WingZ_Zabb_480x388.webp" alt="Spicy Chicken">
+                <h3>ไก่วิงซ์แซ่บ 3 ชิ้น</h3>
+                <p>Price: 60 THB</p>
+                <button onclick="addToCart('Spicy Chicken', 60)">Add to Cart</button>
+            </div>
+            <div class="item" data-price="39">
+                <img src="pic/1_pc._Chick_N-_Roll_480x388.webp" alt="Fries">
+                <h3>ชิค แอนด์ โรล</h3>
+                <p>Price: 39 THB</p>
+                <button onclick="addToCart('Fries', 39)">Add to Cart</button>
+            </div>
+            <div class="item" data-price="29">
+                <img src="pic/1_pc._Chick_N-_Bun_480x388.webp" alt="Chick_N-_Bun">
+                <h3>ชิค แอนด์ บัน</h3>
+                <p>Price: 29 THB</p>
+                <button onclick="addToCart('Chick_N-_Bun', 29)"> Add to Cart </button>
+            </div>
+            <div class="item" data-price="39">
+                <img src="pic/2_pcs._Crispy_Strip_480x388.webp" alt="Crispy_Strip">
+                <h3>ไก่ไม่มีกระดูก 2 ชิ้น</h3>
+                <p>Price: 39 THB</p>
+                <button onclick="addToCart('Crispy_Strip', 39)"> Add to Cart </button>
+            </div>
+            <div class="item" data-price="39">
+                <img src="pic/7_pcs._Chicken_Pop_480x388.webp" alt="Chicken_Pop">
+                <h3>ชิคเก้นป๊อป 7 ชิ้น</h3>
+                <p>Price: 39 THB</p>
+                <button onclick="addToCart('Chicken_Pop', 39)"> Add to Cart </button>
+            </div>
+            <div class="item" data-price="39">
+                <img src="pic/Shrimp_Donut_480x388.webp" alt="Shrimp_Donut">
+                <h3>กุ้งโดนัท</h3>
+                <p>Price: 39 THB</p>
+                <button onclick="addToCart('Shrimp_Donut', 39)"> Add to Cart </button>
+            </div>
+            <div class="item" data-price="79">
+                <img src="pic/6_pcs._Nugget_480x388.webp" alt="Nugget">
+                <h3>นักเก็ตส์ 6 ชิ้น</h3>
+                <p>Price: 79 THB</p>
+                <button onclick="addToCart('Nugget', 79)"> Add to Cart </button>
+            </div>
+            <div class="item" data-price="49">
+                <img src="pic/French_Fries__Large__480x388.webp" alt="French_Fries">
+                <h3>เฟรนช์ฟรายส์</h3>
+                <p>Price: 49 THB</p>
+                <button onclick="addToCart('French_Fries', 49)"> Add to Cart </button>
+            </div>
+        </div>
+        <div class="menu" id="drinks" style="display: none;">
+            <div class="item" data-price="49">
+                <img src="pic/Pepsi_1_Glass_480x388.webp" alt="Coke">
+                <h3>เป๊ปซี่</h3>
+                <p>Price: 49 THB</p>
+                <button onclick="addToCart('Coke', 49)">Add to Cart</button>
+            </div>
+            <div class="item" data-price="49">
+                <img src="pic/7-Up_No_Sugar_480x388.webp" alt="Sprite">
+                <h3>เซเว่นอัพ ไม่มีน้ำตาล</h3>
+                <p>Price: 49 THB</p>
+                <button onclick="addToCart('Sprite', 49)">Add to Cart</button>
+            </div>
+            <div class="item" data-price="49">
+                <img src="pic/Pepsi_no_sugar_1_Glass_480x388.webp" alt="Pepsi">
+                <h3>เป๊ปซี่ ไม่มีน้ำตาล</h3>
+                <p>Price: 49 THB</p>
+                <button onclick="addToCart('Pepsi', 49)">Add to Cart</button>
+            </div>
+            <!-- เพิ่มเมนูเครื่องดื่มเพิ่มเติมที่นี่ -->
+        </div>
+
+        
+        
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <ul id="cartItems">
+                <!-- Items will be added here -->
+            </ul>
+            <p>Total: <span id="totalPrice">0</span> THB</p>
+            <button onclick="goToCheckout()">Checkout</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
